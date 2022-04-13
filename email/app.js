@@ -41,7 +41,7 @@ async function getInfo(){
     secureConnection: true, // SSL安全链接
     auth: {   //发送者的账户密码
       user: 'csshack2016@126.com', //账户
-      pass: 'KWKWSLYZGKVJPHRF', //smtp授权码，到邮箱设置下获取
+      pass: '', //smtp授权码，到邮箱设置下获取
     }
   });
 
