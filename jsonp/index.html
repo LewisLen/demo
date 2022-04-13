@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>这里是在3030端口下的页面</h2>
+  <div id="app"></div>
+  <script>
+    let app = document.querySelector("#app");
+    function getData(tempData){
+      app.innerHTML = tempData[0].id;
+    }
+  </script>
+  <script src="http://localhost:9090/jsonp/data?callback=getData"></script>
+  <script>
+    // 用fetch没法直接发送请求到https://ganzhou.ke.com/api/newhouserecommend?type=1&query=https%3A%2F%2Fganzhou.ke.com%2Fershoufang%2Frs%2F。可以通过发送请求到本地的9090端口，然后代理到目标接口
+    fetch('http://localhost:9090/api/newhouserecommend?type=1&query=https%3A%2F%2Fganzhou.ke.com%2Fershoufang%2Frs%2F').then(res => {
+      console.log(res)
+    })
+  </script>
+</body>
+</html>

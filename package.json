@@ -1,0 +1,24 @@
+{
+  "name": "dailyemail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./email/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.5",
+    "nodemailer": "^6.5.0",
+    "puppeteer": "^5.3.1",
+    "puppeteer-core": "^5.3.1",
+    "socket.io": "^4.4.1",
+    "superagent": "^6.1.0"
+  },
+  "devDependencies": {
+    "ejs": "^3.1.6",
+    "http-proxy-middleware": "^2.0.3"
+  }
+}
