@@ -13,6 +13,7 @@ const readFile = (files) => {
   })
 }
 
+let date = new Date().toUTCString();
 // 用hash值模拟etag
 const transferHash = (file) => {
   const staticPath = path.resolve(__dirname, "./public");
@@ -48,17 +49,33 @@ http.createServer(async (req,res) => {
       break;
     case "/style.css":
       data = await readFile("style.css");
-      res.writeHead(200, {
-        "Content-type": "text/css",
-        // "Last-Modified":
-      });
+      console.log('data---',date)
+      if (req.headers["if-modified-since"] === date) {
+        console.log("命中缓存", date);
+        // 如果命中缓存，则返回304
+        res.writeHead(304, {
+          "Content-type": "text/javascript",
+          "Cache-Control": "no-cache",
+          "Last-Modified": date,
+        });
+      } else {
+        console.log("未命中缓存", date);
+        res.writeHead(200, {
+          "Content-type": "text/css",
+          "Cache-Control": "no-cache",
+          // 这个时间应该设置成文件内容最后修改的真实时间
+          "Last-Modified": date,
+        });
+      }
       break;
     case "/test.js":
       data = await readFile("test.js");
+	  // 这里是读取文件内容转换成hash值模拟etag，如果内容改变了，则hash值肯定也会跟着变化。
       let fileETag = transferHash("test.js");
       // req.headers["if-none-match"]注意头部信息需要小写
+	  // 第二次请求后，if-none-match的值和etag值进行比对，如果相等，说明文件没有被修改过，可以直接用缓存数据，返回304，如果是不相等，则表示文件被修改过，则需要重新从服务器中取数据
       if (req.headers["if-none-match"] === fileETag) {
-        console.log("命中缓存", fileETag);
+        // console.log("命中缓存", fileETag);
         // 如果命中缓存，则返回304
         res.writeHead(304, {
           "Content-type": "text/javascript",
@@ -67,7 +84,7 @@ http.createServer(async (req,res) => {
           ETag: fileETag,
         });
       } else {
-        console.log("未命中缓存", fileETag);
+        // console.log("未命中缓存", fileETag);
         res.writeHead(200, {
           "Content-type": "text/javascript",
           "Cache-Control": "max-age=5,no-cache",
