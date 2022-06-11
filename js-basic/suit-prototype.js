@@ -20,7 +20,6 @@ function initPrototype(subClass, superClass) {
   var p = init(superClass.prototype);
   // 这里是将空对象的contructor指向子类，也就是说p是子类的prototype对象
   p.contructor = subClass;
-  console.log(p instanceof subClass);
   subClass.prototype = p;
 }
 
