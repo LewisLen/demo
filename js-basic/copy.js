@@ -44,8 +44,13 @@ console.log(obj); // {name: 'obj', arr: [ 1, 2, 3 ], un: undefined, n: null, fnc
 
 // 深拷贝
 const deepCopy = (source) => {
-  if (typeof source !== "object") return;
-  let target = source instanceof Array ? [] : {};
+  if (typeof source !== "object" || source === null) return source;
+  if (source instanceof Date) return new Date(source);
+  if (source instanceof RegExp) return new RegExp(source);
+  // let target = source instanceof Array ? [] : {};
+  // 等同于
+  // constructor()返回构造函数，new则是创建一个实例
+  let target = new source.constructor();
   for (let prop in source) {
     // 仅仅复制自身属性
     if (source.hasOwnProperty(prop)) {
