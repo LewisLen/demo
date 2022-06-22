@@ -23,12 +23,31 @@ var Ming = {
 };
 
 var Obj = {
-  name: 'obj',
-  getFn: function(){
+  name: "obj",
+  getFn: function () {
     console.log(this);
     return this.name;
+  },
+};
+
+var createSingle = (function () {
+  var _unique = null;
+  function single() {
+    return {
+      name: "len",
+    };
   }
-}
+  return function () {
+    if (_unique === null) {
+      _unique = single();
+    }
+    return _unique;
+  };
+})();
+
+var obj1 = createSingle();
+var obj2 = createSingle();
+console.log(obj1 === obj2); // true
 
 var Book = (function () {
   var book = {
