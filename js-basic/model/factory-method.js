@@ -16,4 +16,50 @@ var java = function(content){
   })(content)
 }
 
+// 篮球基类
+let BasketBall = function(ball){
+  this.ball = ball;
+  this.info = 'NBA';
+  this.Famous = ["Jordan", "Kobe", "James"];
+}
+BasketBall.prototype = {
+  getInfo: function(){
+    console.log("NBA");
+  },
+  getFamous: function(){
+    console.log(this.Famous);
+  }
+}
+// 足球基类
+let Football = function (ball) {
+  this.ball = ball;
+  this.info = "wordCup";
+};
+Football.prototype = {
+  getInfo: function () {
+    console.log("wordCup");
+  },
+  getBallSize: function(){
+    console.log('足球大小');
+  }
+};
+
 // 安全模式
+// 无论是否使用new关键字都可以创建所需的实例，称为安全模式创建工厂类-也就是是工厂方法模式
+function createFactory(type,param){
+  if(this instanceof createFactory){
+    return new this[type](param)
+  }else{
+    return new createFactory(type,param);
+  }
+}
+// 真正创建类的方法放到工厂函数中的原型上
+createFactory.prototype = {
+  nba: BasketBall,
+  worldCup: Football
+};
+// 调用方式
+let ball = createFactory('nba','篮球');
+// 或
+let ball2 = new createFactory('nba','篮球');
+
