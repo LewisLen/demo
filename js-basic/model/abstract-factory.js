@@ -14,14 +14,34 @@ Car.prototype =  {
   }
 }
 
-var VehicleFactory = function(subType,superType){
+var VehicleFactory = function (subType, superType) {
   // 判断抽象工厂中是否有抽象类
-  if(typeof VehicleFactory[superType] === 'function'){
-    function F(){}
+  if (typeof VehicleFactory[superType] === "function") {
+    function F() {}
     F.prototype = new VehicleFactory[superType]();
     subType.constructor = subType;
     subType.prototype = new F();
-  }else{
-    throw new Error('未创建该抽象类');
+  } else {
+    throw new Error("未创建该抽象类");
+  }
+};
+
+VehicleFactory.Car = function () {
+  this.type = "car";
+};
+VehicleFactory.Car.prototype = {
+  getType: function(){
+    return this.type
   }
 }
+
+// 子类
+var BMW = function (price, speed) {
+  this.price = price;
+  this.speed = speed;
+};
+
+VehicleFactory(BMW, "Car");
+let bmw = new BMW(20, 30);
+console.log(bmw.type); // 'car'
+console.log(bmw.getType()); // 'car'
