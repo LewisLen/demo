@@ -42,6 +42,11 @@ o2.arr.push(4);
 console.log(o); // { name: 'obj', arr: [ 1, 2, 3, 4 ], n: null }
 console.log(obj); // {name: 'obj', arr: [ 1, 2, 3 ], un: undefined, n: null, fnc: ƒ}
 
+/**
+ * 手写深拷贝
+ * @param {被拷贝的对象} source 
+ * @returns 
+ */
 // 深拷贝
 const deepCopy = (source) => {
   if (typeof source !== "object" || source === null) return source;

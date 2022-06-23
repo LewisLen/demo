@@ -1,3 +1,10 @@
+/**
+ * 手动实现new操作符
+ * @param {构造函数} fn 
+ * @param  {...any} args 
+ * @returns 返回object或者构造函数的实例对象
+ */
+
 // new操作符
 function myNew(fn, ...args) {
   // 1. 创建一个控对象
