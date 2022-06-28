@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+  <title>盒模型</title>
+  <style>
+    .content{
+      width: 100px;
+      height: 500px;
+      margin: 10px;
+      border: 1px solid red;
+    }
+    /*  */
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: #ffc129;
+    }
+    .box1{
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      margin: 10px;
+      border: 10px solid #ccc;
+      background-color:aquamarine;
+      box-sizing: content-box;
+    }
+    .box2{
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      margin: 10px;
+      border: 10px solid #333;
+      background-color:azure;
+      box-sizing: border-box;
+    }
+    .line{
+      width: 1px;
+      height: 100px;
+      background-color: red;
+      transform: scale(50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="line"></div>
+  <h2>盒模型</h2>
+  <p>
+    盒模型主要是有标准的W3C盒子模型和IE盒子模型。
+  </p>
+  <p>box-sizing有两个值： border-box,content-box,padding-box</p>
+  <div class="btn-content">
+    <button id="btn1">改变box1的盒模型</button>
+    <button id="btn2">改变box2的盒模型</button>
+  </div>
+  <div class="content" id="content">
+    <div class="box" id="box">
+      无boder\padding\marging
+    </div>
+    <p>标准盒模型:</p>
+    <div class="box1" id="box1">
+      abcdefghijklmnopqrstuvwsyz
+    </div>
+    <p>IE盒模型:</p>
+    <div class="box2" id="box2">
+      abcdefghijklmnopqrstuvwsyz
+    </div>
+  </div>
+  <script>
+    window.onload = function(){
+      let oBtn1 = document.getElementById('btn1');
+      let oContent = document.querySelector("#content");
+      oContent.addEventListener('click',function(e){
+        let oEvent = e || event || window.event;
+        let targetEleId = oEvent.target.id;
+        if(targetEleId === 'box1' || targetEleId === 'box2'){
+          let oDiv = document.querySelector("#"+ targetEleId);
+          if (window.getComputedStyle(oDiv).boxSizing === 'content-box') {
+            oDiv.style.boxSizing = 'border-box';
+            oDiv.innerHTML = 'IE盒模型'
+          } else {
+            oDiv.style.boxSizing = 'content-box';
+            oDiv.innerHTML = '标准盒模型'
+          }
+        }
+      },false);
+    }
+  </script>
+</body>
+</html>
