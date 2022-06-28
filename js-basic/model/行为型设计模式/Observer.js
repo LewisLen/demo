@@ -78,3 +78,10 @@ news3.subscribe("carInfo", function (e) {
 });
 
 msgCenter.launch("carInfo", { info: "新款上市" });
+
+
+
+
+let Observer = (function(){
+  //
+})
