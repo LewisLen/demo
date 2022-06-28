@@ -1,7 +1,7 @@
 /**
  * JavaScript一共有六种主要类型: string,number,boolean,null,undefined,object
  *
- * typeof 操作符对应的值： 'string','number','boolean','object','undefined','object','function'，除此之外，typeof 不存在其它值。
+ * typeof 操作符对应的值： 'string','number','boolean','object','undefined','object','function'，除此之外，typeof 不存在其它值。 ES6还有 'symbol'
  *
  *
  * 内置对象： String,Number,Boolean,Object,Function,Array,Date,RegExp,Error。
@@ -50,9 +50,28 @@ console.log(typeof err); // 'object'
 console.log(err instanceof Object); // true
 console.log(err instanceof Error); // true
 
+let s = Symbol("s");
+console.log(typeof s); // 'symbol'
+
 /**
  *  === 和 == 的区别
  */
+
+// 运算符。建议除了判断 == null之外，其余都是用 ===
+100 == "100"; // true
+0 == ""; // true
+0 == false; // true
+false == ""; // true
+unll == undefined; // true
+
+// 以下是 false 变量，除此之外都是 true
+
+!!0 === false;
+!!NaN === false;
+!!"" === false;
+!!null === false;
+!!undefined === false;
+!!false === false;
 
 /**
  * window.onload 和 DOMContentLoaded的区别
