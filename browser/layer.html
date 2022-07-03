@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浏览器图层树</title>
+  <link rel="stylesheet" href="./reset.css">
+  <style>
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: rgb(251, 2, 2);
+    }
+    .three-d{
+      width: 100px;
+      height: 100px;
+      background-color: rgb(21, 255, 0);
+      transform: rotateX(30deg);
+    }
+    .box-position{
+      width: 100px;
+      height: 100px;
+      background-color: rgb(30, 0, 255);
+      position: absolute;
+      left: 80px;
+      top: 80px;
+    }
+    .animate-box{
+      width: 100px;
+      height: 100px;
+      background-color: rgb(9, 245, 72);
+      animation: testanimated 3s;
+    }
+    @keyframes testanimated {
+      0%{
+        transform: rotate(0deg);
+      }
+      100%{
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 通过浏览器调试工具layer可以看到图层 -->
+  <div class="box">
+    普通文档流
+  </div>
+  <!-- 1.css设置为3d样式的元素会是一个新图层 -->
+  <div class="three-d">
+    3D
+  </div>
+  <!-- 2.改变了position的元素 -->
+  <div class="box-position">
+    absolute
+  </div>
+  <!-- 3. video -->
+  <video width="100px" height="100px" controls></video>
+  <!-- 4. canvas -->
+  <canvas id="can">canvas</canvas>
+  <!-- 5. css3动画执行的时候也是一个单独图层 -->
+  <div class="animate-box">css3动画</div>
+  <script>
+    let canvas = document.getElementById("can");
+    let ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'rgb(255, 0, 170)';
+    ctx.fillRect(0,0,80,100);
+  </script>
+</body>
+</html>
