@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js阻塞渲染</title>
+  <style>
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: rgb(154, 205, 50);
+      will-change: transform;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    1. 会阻塞浏览器的渲染
+    2. 阻塞DOM解析
+    3. 阻塞js执行(因为是单线程)
+  -->
+  <script>
+    let box = document.querySelector('.box');
+    // 没有执行完alert则不会执行下一步js，阻塞了js的执行。同时这里的js没有执行完，下方的box则不会显示。所以阻塞了DOM解析和浏览器渲染
+    alert(1);
+    console.log(box);
+    // 拿不到dom，因为这里还没有解析dom
+  </script>
+  <div class="box">
+    box
+  </div>
+
+</body>
+</html>
