@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>重绘重排优化</title>
+  <style>
+    .box{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      /* will-change */
+      will-change: transform;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" id="box"></div>
+  <script>
+    let box = document.getElementById("box");
+    setTimeout(() => {
+      box.style.transform = 'translateX(100px)';
+    },1000);
+
+
+    /*
+    1. 直接使用transform会触发重排和重绘
+    2. 配合position:relative只会触发重绘
+    3. 元素作为一个单独的图层(添加will-change属性)处理使用transform不会触发重绘，也不会触发重排
+    */
+  </script>
+</body>
+</html>
