@@ -10,7 +10,17 @@
       console.log('DOMContentLoaded');
     });
   </script>
-  <link rel="stylesheet" href="./bootstrap.css">
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(0, 221, 255);
+    }
+  </style>
+  <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css" rel="stylesheet">
+  <script>
+    console.log('在link之后的script');
+  </script>
 </head>
 <body>
   <div class="box"></div>
