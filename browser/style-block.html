@@ -5,10 +5,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>style阻塞渲染</title>
-  <div>
-    <p>这里是放在style标签之前的div元素</p>
-    <p>所以会先渲染出来，等css解析之后才会渲染出下一个元素</p>
-  </div>
+  <style>
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+  <script>
+    // 获取div元素
+    let oDiv = document.querySelectorAll(".box");
+    // 如果link的方式会阻碍DOM元素的解析和渲染，那么在css加载之前，div标签应该是空白的，且js也没法获取到div元素。
+    // 但结果是，没有等css完全解析完，div就能获得DOM了，说明css不会阻塞DOM解析，但是会阻塞DOM渲染
+    // 通过浏览器渲染切面流程可以看出，html和css解析是不同的task，也就是说是不同的线程在处理
+    // 如果是style标签引入的方式，则是会开启另外一个html解析器去解析css
+    console.log(oDiv);
+  </script>
   <style>
     /*!
  * Bootstrap v3.4.1 (https://getbootstrap.com/)
@@ -6844,11 +6856,6 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
-  .box{
-    width: 100px;
-    height: 100px;
-    background-color: red;
-  }
   </style>
 </head>
 <body>

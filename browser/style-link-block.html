@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>css阻塞渲染</title>
+<style>
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+</style>
+<script>
+  // 获取div元素
+  let oDiv = document.querySelectorAll(".box");
+  // 如果link的方式会阻碍DOM元素的解析和渲染，那么在css加载之前，div标签应该是空白的，且js也没法获取到div元素。
+  // 但结果是，没有等css完全解析完，div就能获得DOM了，说明css不会阻塞DOM解析，但是会阻塞DOM渲染
+  // 通过浏览器渲染切面流程可以看出，html和css解析是不同的task，也就是说是不同的线程在处理
+  // 如果是style标签引入的方式，则是会开启另外一个html解析器去解析css
+  setTimeout(() => {
+    // 这里用setTimeout是因为 js 执行会阻塞 DOM 和 CSS 的解析渲染。如果不使用 setTimeout 的话，直接 console.log 可能是空的，就没有比较意义了
+    console.log(oDiv);
+  })
+</script>
+<link rel="stylesheet" href="./bootstrap.css">
+</head>
+
+<body>
+  <!-- 
+    通过Slow 3G可以看到style阻塞渲染效果
+    1. 会阻塞浏览器的渲染
+    2. 不会阻塞DOM的解析
+  -->
+  <div class="box">HTML解析器和CSS解析器是不同的</div>
+</body>
+
+</html>

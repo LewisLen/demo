@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>css阻塞js执行</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    h1{
+      background-color: red;
+    }
+  </style>
+  <script>
+    console.log('在link标签之前的js');
+    var startDate = new Date();
+  </script>
+  <link href="./bootstrap.css" rel="stylesheet">
+</head>
+<body>
+  <h1>这是红色的</h1>
+  <script>
+    var endDate = new Date()
+    console.log('在link标签之后的js');
+    console.log('经过了' + (endDate - startDate) + 'ms')
+  </script>
+</body>
+</html>

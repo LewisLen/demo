@@ -23,7 +23,7 @@
   <script>
     let box = document.querySelector('.box');
     // 没有执行完alert则不会执行下一步js，阻塞了js的执行。同时这里的js没有执行完，下方的box则不会显示。所以阻塞了DOM解析和浏览器渲染
-    alert(1);
+    // alert(1);
     console.log(box);
     // 拿不到dom，因为这里还没有解析dom
   </script>

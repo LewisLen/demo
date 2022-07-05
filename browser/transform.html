@@ -10,8 +10,8 @@
       width: 200px;
       height: 200px;
       background-color: red;
-      /* will-change */
       will-change: transform;
+      /* transform: translateX(100px); */
     }
   </style>
 </head>
@@ -22,8 +22,6 @@
     setTimeout(() => {
       box.style.transform = 'translateX(100px)';
     },1000);
-
-
     /*
     1. 直接使用transform会触发重排和重绘
     2. 配合position:relative只会触发重绘
