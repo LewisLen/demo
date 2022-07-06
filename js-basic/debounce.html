@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖和节流</title>
+</head>
+<body>
+  <input type="text" id="search">
+  <script>
+      // 比如最经常遇到的 input 搜索框，肯定不是边输入边搜素，而是输入完，停多少秒时才触发搜索函数
+      function inputRequest(param) {
+        console.log("输入的参数", param);
+      }
+
+      const obj = {
+        fn: inputRequest
+      }
+
+      /**
+       * @param {要被执行的函数} fn
+       * @param {等待触发的时间} wait
+       */
+      function debounce(fn, wait) {
+        let timer;
+        return function () {
+          // this指向window
+          const _this = this;
+          // 为了保留调用函数的传参
+          // 先移除定时器，避免多个定时器同时存在
+          clearTimeout(timer);
+          // timer = setTimeout(function () {
+          //   fn.apply(_this, args);
+          // }, wait);
+          timer = setTimeout(() => {
+            console.log(this);
+            fn.apply(this, arguments);
+          },wait);
+        };
+      }
+      let oInput = document.getElementById("search");
+      // 使用防抖函数。表示如果用户在输入时停顿了1秒钟，则会触发请求函数。如果在停顿的1秒钟之内又重新输入了，则不会触发请求函数。
+      let debounceRequest = debounce(obj.fn, 1000);
+      oInput.addEventListener("keyup", function (e) {
+        debounceRequest(e.target.value);
+      });
+
+  </script>
+</body>
+</html>
