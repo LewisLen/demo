@@ -23,12 +23,14 @@
        * @param {等待触发的时间} wait
        */
       function debounce(fn, wait) {
+        // 这里利用了必包，使timer一直保存在内存中
         let timer;
         return function () {
           // this指向window
           const _this = this;
+          console.log(_this)
           // 为了保留调用函数的传参
-          // 先移除定时器，避免多个定时器同时存在
+          // 先移除定时器，避免多个定时器同时存在，只执行最后一次函数
           clearTimeout(timer);
           // timer = setTimeout(function () {
           //   fn.apply(_this, args);
@@ -42,9 +44,12 @@
       let oInput = document.getElementById("search");
       // 使用防抖函数。表示如果用户在输入时停顿了1秒钟，则会触发请求函数。如果在停顿的1秒钟之内又重新输入了，则不会触发请求函数。
       let debounceRequest = debounce(obj.fn, 1000);
-      oInput.addEventListener("keyup", function (e) {
+      // oInput.addEventListener("keyup", function (e) {
+      //   debounceRequest(e.target.value);
+      // });
+      oInput.onblur = function(e){
         debounceRequest(e.target.value);
-      });
+      }
 
   </script>
 </body>
