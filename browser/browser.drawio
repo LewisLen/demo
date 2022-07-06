@@ -1,0 +1,86 @@
+<mxfile host="65bd71144e">
+    <diagram id="n9AIJN-EhkLo3JKdoT55" name="Page-1">
+        <mxGraphModel dx="878" dy="451" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="2" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="Parse HTML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c9c9c9;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry y="80" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="3" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Parse StyleSheet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c9c9c9;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry y="160" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="4" target="13">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="220" y="100"/>
+                            <mxPoint x="220" y="140"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="Recalculate" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="14">
+                    <mxGeometry x="0.15" y="4" relative="1" as="geometry">
+                        <mxPoint x="18" y="-6" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="DOM Tree" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#739ddb;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="80" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="生成" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="80" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="CSS Rule Tree" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#78a1dd;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="160" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="生成" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="160" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="13" target="18">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Render Tree" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9682df;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="294" y="120" width="76" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="endArrow=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="10">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="280" as="sourcePoint"/>
+                        <mxPoint x="220" y="130" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="220" y="180"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="18" target="21">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Layout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9682df;strokeColor=#6c8ebf;arcSize=34;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="生成" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="140" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="21" target="22">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Pre-Paint" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9682df;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="22" target="23">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Paint" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82b061;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Composite Layers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82b061;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="120" width="80" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
