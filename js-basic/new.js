@@ -19,6 +19,9 @@ function myNew(fn, ...args) {
   return result instanceof Object ? result : obj;
 }
 
+// 1.2步也可以缩短为一步  let obj = Object.create(fn.prototype);
+// Object.create()以构造函数的原型对象为原型，创建一个空对象，即创建一个{ __proto__: fn.prototype }
+
 function Book(title, price) {
   this.title = title;
   this.price = price;
