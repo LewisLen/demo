@@ -1,7 +1,7 @@
 /**
  * 手动实现new操作符
- * @param {构造函数} fn 
- * @param  {...any} args 
+ * @param {构造函数} fn
+ * @param  {...any} args
  * @returns 返回object或者构造函数的实例对象
  */
 
@@ -13,6 +13,7 @@ function myNew(fn, ...args) {
   // Object.setPrototypeOf(obj.fn.prototype);
   obj.__proto__ = fn.prototype;
   // 3. 将空对象作为构造函数的上下文，使得this指向空对象
+  // 如果fn有返回值且是对象，则result就是fn函数的返回值，最后new出来的也是那个返回对象。否则是new出来的对象
   let result = fn.apply(obj, args);
   // 4. 如果返回的不是对象，则返回obj
   return result instanceof Object ? result : obj;
